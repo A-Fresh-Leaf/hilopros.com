@@ -1,0 +1,185 @@
+@import "tailwindcss";
+@import "./animations.css";
+
+@theme {
+  /* Brand Colors */
+  --color-brand-teal: #2E9E8A;
+  --color-brand-teal-dark: #1B6B5E;
+  --color-brand-teal-light: #4BBFAB;
+  --color-brand-teal-50: #f0faf8;
+  --color-brand-teal-100: #d0f0ea;
+  --color-brand-charcoal: #2D3748;
+  --color-brand-slate: #4A5568;
+  --color-brand-off-white: #F7FAFC;
+  --color-brand-dark: #1A202C;
+  --color-brand-darker: #0F1419;
+
+  /* Typography */
+  --font-family-sans: 'Inter', system-ui, sans-serif;
+  --font-family-display: 'Outfit', 'Inter', system-ui, sans-serif;
+
+  /* Shadows */
+  --shadow-glow: 0 0 30px rgba(46, 158, 138, 0.3);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.12);
+  --shadow-card-hover: 0 8px 40px rgba(0, 0, 0, 0.2);
+
+  /* Marquee Animations */
+  --animate-marquee: marquee var(--duration, 40s) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration, 40s) linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap, 1.5rem)));
+    }
+  }
+
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap, 1.5rem)));
+    }
+  }
+}
+
+/* Base styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-brand-darker);
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-display);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1A202C;
+}
+::-webkit-scrollbar-thumb {
+  background: #2E9E8A;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4BBFAB;
+}
+
+/* Selection */
+::selection {
+  background: rgba(46, 158, 138, 0.3);
+  color: #fff;
+}
+
+/* Utility classes */
+.text-gradient {
+  background: linear-gradient(135deg, #4BBFAB 0%, #2E9E8A 50%, #1B6B5E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(46, 158, 138, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 158, 138, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.glow-teal {
+  box-shadow: var(--shadow-glow);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-light {
+  background: rgba(46, 158, 138, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(46, 158, 138, 0.2);
+}
+
+/* Global Typography Rules */
+h1, .page-title, h2, .section-title-heading {
+  font-size: 36px !important;
+  line-height: 1.25 !important;
+}
+
+h3, h4 {
+  font-size: 24px !important;
+  line-height: 1.35 !important;
+}
+
+/* Mobile heading scale-down — keeps desktop sizes intact */
+@media (max-width: 767px) {
+  h1, .page-title {
+    font-size: 26px !important;
+    line-height: 1.2 !important;
+  }
+  h2, .section-title-heading {
+    font-size: 24px !important;
+    line-height: 1.25 !important;
+  }
+  h3, h4 {
+    font-size: 18px !important;
+    line-height: 1.35 !important;
+  }
+}
+
+/* Override Product/Service/Value Card Names to be exactly 16px */
+.product-card-title,
+.service-card-title,
+.target-card-title,
+.roadmap-card-title,
+.whyus-card-title {
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+}
+
+/* Hide scrollbars for swipe containers */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Prevent iOS Safari input focus auto-zoom by enforcing 16px font size on inputs on mobile viewports */
+@media (max-width: 767px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Touch highlights reset */
+a, button, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
