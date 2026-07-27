@@ -16,8 +16,10 @@ export function SEOHead({
   const defaultTitle = 'HiLoPros — Low Voltage. High Tech Standards.'
   const defaultDesc = 'Professional smart home, networking, security, and low voltage technology solutions.'
   const defaultKeywords = 'smart home, low voltage, networking, security cameras, mesh WiFi, home theater, Charlotte NC'
+  const defaultOgImage = 'https://hilopros-com-six.vercel.app/logo.png'
   
   const siteTitle = title ? `${title} | HiLoPros` : defaultTitle
+  const shareImage = ogImage || defaultOgImage
 
   return (
     <Helmet>
@@ -33,14 +35,15 @@ export function SEOHead({
       <meta property="og:title" content={ogTitle || title || defaultTitle} />
       <meta property="og:description" content={ogDescription || description || defaultDesc} />
       <meta property="og:type" content="website" />
-      {ogImage && <meta property="og:image" content={ogImage} />}
+      <meta property="og:image" content={shareImage} />
+      <meta property="og:image:secure_url" content={shareImage} />
       {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
 
       {/* Twitter Cards */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={ogTitle || title || defaultTitle} />
       <meta name="twitter:description" content={ogDescription || description || defaultDesc} />
-      {ogImage && <meta name="twitter:image" content={ogImage} />}
+      <meta name="twitter:image" content={shareImage} />
     </Helmet>
   )
 }
